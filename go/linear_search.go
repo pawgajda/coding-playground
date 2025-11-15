@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func search(arr []int, n int) int {
+func linear_search(arr []int, n int) int {
 	for i, v := range arr {
 		if v == n {
 			// return index of n
@@ -21,11 +21,11 @@ func main() {
 
 	// test for success
 	n := 15
-	result := search(arr, n)
+	result := linear_search(arr, n)
 	fmt.Printf("Linear Search for number %v: %v\n", n, result)
 
 	// test for failure
 	n = 25
-	result = search(arr, n)
+	result = linear_search(arr, n)
 	fmt.Printf("Linear Search failure for number %v: %v\n", n, result)
 }
