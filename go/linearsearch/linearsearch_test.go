@@ -40,5 +40,4 @@ func TestSearchEmptyArray(t *testing.T) {
 	if actual != expected {
 		t.Errorf("Expected index %d, got %d", expected, actual)
 	}
-
 }
