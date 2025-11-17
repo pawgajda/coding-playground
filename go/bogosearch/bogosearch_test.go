@@ -56,7 +56,7 @@ func TestBogoSearchFailure(t *testing.T) {
 	}
 }
 
-func TestBogoSortEmptyArray(t *testing.T) {
+func TestBogoSearchEmptyArray(t *testing.T) {
 	// define Rand with SEED
 	rng := rand.New(rand.NewPCG(SEED, 0))
 
@@ -80,7 +80,7 @@ func TestBogoSortEmptyArray(t *testing.T) {
 	}
 }
 
-func TestBogoSortRandomArray(t *testing.T) {
+func TestBogoSearchRandomArray(t *testing.T) {
 	// define Rand with SEED
 	rng := rand.New(rand.NewPCG(SEED, 0))
 
@@ -101,5 +101,23 @@ func TestBogoSortRandomArray(t *testing.T) {
 
 	if actualTries != expectedTries {
 		t.Errorf("Expected tries %d, got %d instead", expectedTries, actualTries)
+	}
+}
+
+// test rng fallback
+func TestBogoSearchRngFallback(t *testing.T) {
+	// define example array of integers
+	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
+
+	// index of 15
+	expected := 14
+
+	// pass nil as rng to test fallback
+	actual, actualTries := BogoSearch(arr, 15, MAXTRIES, nil)
+
+	t.Logf("Execution took %d tries", actualTries)
+
+	if actual != expected {
+		t.Errorf("Expected index %d, got %d", expected, actual)
 	}
 }
